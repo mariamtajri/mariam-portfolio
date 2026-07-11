@@ -11,6 +11,9 @@ import './App.css'
 // Lazy load project pages - add your project page imports here
 // Example: const MyProject = lazy(() => import('./pages/projects/MyProject'))
 const Contact = lazy(() => import('./pages/Contact'))
+const AIFashionRecommendation = lazy(() => import('./pages/projects/AIFashionRecommendation'))
+const UXUICollaboration = lazy(() => import('./pages/projects/UXUICollaboration'))
+const FinancialModelingTraining = lazy(() => import('./pages/projects/FinancialModelingTraining'))
 
 // Lazy load below-the-fold components for better initial load
 const Projects = lazy(() => import('./components/section/Projects'))
@@ -93,12 +96,13 @@ function AppContent() {
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <main id="main-content" className="main-content">
           <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* Add your project routes here */}
-              {/* Example: <Route path="/projects/my-project" element={<MyProject />} /> */}
-            </Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/projects/ai-fashion-recommendation" element={<AIFashionRecommendation />} />
+            <Route path="/projects/ux-ui-collaboration" element={<UXUICollaboration />} />
+            <Route path="/projects/financial-modeling-training" element={<FinancialModelingTraining />} />
+          </Routes>
           </Suspense>
         </main>
         <Suspense fallback={<div className="h-32 flex items-center justify-center">Loading...</div>}>

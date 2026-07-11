@@ -19,10 +19,10 @@ const About = () => {
   const themeColors = useThemeColors();
 
   const roles = [
-    'Software Engineer',
-    'Full-Stack Developer',
-    'Systems Engineer',
-    'Frontend Developer',
+    'Junior @ UC Davis',
+    'Managerial Economics Major',
+    'AI Model Trainer',
+    'Deal Sourcing Extern',
   ];
 
   const profileImages = [
@@ -213,7 +213,7 @@ const About = () => {
           <div className="flex flex-col md:flex-row justify-between items-start max-w-6xl mx-auto gap-8">
             <div className="text-left w-full md:w-auto">
               <div className="ascii-container justify-start text-3xl md:text-4xl lg:text-5xl">
-                <AsciiMorphText text="Hi, I'm Your Name" />
+                <AsciiMorphText text="Hi, I'm Mariam Tajri" />
               </div>
               <div className="hero-subtitle justify-start text-base md:text-lg lg:text-xl mt-2">
                 <div className="flex flex-wrap items-center justify-start">
@@ -276,7 +276,19 @@ const About = () => {
 
             {/* About Me Journal Image */}
             <div className="w-full md:max-w-2xl lg:max-w-4xl relative z-20 px-1 md:px-0">
-              <picture>
+  <button
+    onClick={() => setShowProfileModal(true)}
+    className="absolute top-1/2 right-[15%] md:right-[20%] -translate-y-1/2 z-30 px-4 py-2 rounded-full font-semibold text-sm md:text-base shadow-lg transition-all duration-300 hover:scale-105 animate-bounce"
+    style={{
+      backgroundColor: themeColors.colors.pink[500],
+      color: themeColors.colors.white,
+      border: `2px solid ${themeColors.colors.white}`,
+    }}
+    aria-label="Click to view photos"
+  >
+    Click Me!
+  </button>
+  <picture>
                 <source
                   srcSet={`${aboutMeJournalWebp400} 400w, ${aboutMeJournalWebp800} 800w`}
                   sizes="(max-width: 375px) 320px, (max-width: 480px) 400px, (max-width: 768px) 450px, 800px"

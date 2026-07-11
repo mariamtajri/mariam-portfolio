@@ -8,34 +8,80 @@ const Experience = () => {
   const themeColors = useThemeColors();
   const experiences = [
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "AI Model Trainer",
+      company: "Handshake",
+      location: "San Francisco",
+      period: "March 2026 - Present",
       description: [
-        "Description of your role and accomplishments",
+        "Evaluated and annotated AI-generated outputs to improve model accuracy, tone, and response quality across diverse use cases",
+        "Identified patterns in model behavior and documented detailed feedback to guide iterative training improvements",
+        "Applied strong written communication skills to provide precise, structured evaluations aligned with project guidelines",
+
       ]
     },
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "Deal Sourcing & Startup Analysis Extern",
+      company: "HP",
+      location: "Remote",
+      period: "April 2026 - Present",
       description: [
-        "Description of your role and accomplishments",
-        "Another accomplishment or responsibility",
-        "One more key achievement",
+        "Sourced and evaluated early-stage startups across emerging technology sectors for potential partnership and investment opportunities",
+        "Synthesized market research and competitive landscape analyses into clear written briefs for internal stakeholders",
+        "Communicated findings through structured presentations, translating complex financial and technical data for non-specialist audiences",
       ]
     },
     {
-      title: "Your Job Title",
-      company: "Company Name",
-      location: "City, State",
-      period: "Month Year - Month Year",
+      title: "Policy Advocate",
+      company: "CAIR CA",
+      location: "Sacramento, CA",
+      period: "April 2026 - Present",
       description: [
-        "Description of your role and accomplishments",
-        "Another accomplishment or responsibility",
-        "One more key achievement",
+        "Sourced and evaluated early-stage startups across emerging technology sectors for potential partnership and investment opportunities",
+        "Synthesized market research and competitive landscape analyses into clear written briefs for internal stakeholders",
+        "Communicated findings through structured presentations, translating complex financial and technical data for non-specialist audiences",
+      ]
+    },
+    {
+      title: "Research Intern",
+      company: "Stanford Medicine",
+      location: "Palo Alto, CA",
+      period: "April 2024 - June 2025",
+      description: [
+        "Collected, organized, and analyzed experimental data to support ongoing biomedical research initiatives",
+        "Conducted literature research to evaluate emerging technologies and validate research hypotheses",
+        "Prepared written summaries and presentations communicating complex findings to supervisors and research teams",
+      ]
+    },
+    {
+      title: "E-Commerce Associate",
+      company: "Asma & Shumaila - Ethnic Clothing Brand",
+      location: "Fremont, CA",
+      period: "March 2021 - June 2024",
+      description: [
+        "Helped launch and manage an online retail platform during COVID-19, contributing to 5,000+ global sales",
+        "Analyzed customer engagement data to refine content strategy and improve product visibility",
+        "Grew Instagram audience to 100,000+ followers through consistent, data-informed content planning",
+      ]
+    },
+    {
+      title: "VP of Digital Marketing",
+      company: "ReKompile",
+      location: "San Jose, CA",
+      period: "August 2023 - June 2024",
+      description: [
+        "Developed and executed digital marketing strategies to increase brand visibility and customer engagement",
+        "Analyzed performance metrics to refine content strategy and maximize audience reach",
+        "Collaborated with creative leadership to align branding with market trends and customer preferences",
+      ]
+    },
+    {
+      title: "Private Tutor",
+      company: "Math Ahead",
+      location: "Fremont, CA",
+      period: "July 2020 - May 2024",
+      description: [
+        "Delivered one-on-one and small-group tutoring in mathematics tailored to individual learning needs",
+        "Developed strong communication, leadership, and instructional skills",
       ]
     }
   ];

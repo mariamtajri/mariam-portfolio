@@ -1,9 +1,7 @@
-// Project icons module - add your project icon imports here
-// Example:
-// import MyProjectIcon from './MyProjectIcon.webp';
-//
-// export { MyProjectIcon };
-// export default { MyProjectIcon };
+// Project icons module
+import AIFashionIcon from './aiFashion.svg';
+import UXUIDesignIcon from './uxuiDesign.svg';
+import FinancialModelingIcon from './financialModeling.svg';
 
-export {};
-export default {};
+export { AIFashionIcon, UXUIDesignIcon, FinancialModelingIcon };
+export default { AIFashionIcon, UXUIDesignIcon, FinancialModelingIcon };

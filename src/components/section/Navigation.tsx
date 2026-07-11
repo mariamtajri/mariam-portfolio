@@ -103,20 +103,20 @@ const Navigation = () => {
           ${withAlpha(isDarkMode ? themeColors.colors.dark[950] : themeColors.colors.pink[50], isScrolled ? 0.7 : 0.5)},
           ${withAlpha(isDarkMode ? themeColors.colors.dark[900] : themeColors.colors.pink[25], isScrolled ? 0.7 : 0.5)})`
       }}>
-      <div className="nav-container">
-        <button className="signature-name"
-          style={{ 
-            cursor: 'pointer', 
-            color: themeColors.colors.pink[500], 
-            background: 'none', 
-            border: 'none',
-            outline: 'none',
-            WebkitTextFillColor: themeColors.colors.pink[500]
-          }}
-          onClick={() => window.location.href = '/'}
-          aria-label="Your Name - Go to homepage">
-          Your Name
-        </button>
+     <div className="nav-container">
+  <button className="signature-name"
+    style={{
+      cursor: 'pointer',
+      color: themeColors.colors.pink[500],
+      background: 'none',
+      border: 'none',
+      outline: 'none',
+      WebkitTextFillColor: themeColors.colors.pink[500]
+    }}
+    onClick={() => window.location.href = '/'}
+    aria-label="Mariam Tajri - Go to homepage">
+    Mariam Tajri
+  </button>
         
         {/* Desktop Navigation */}
         <div className="nav-tabs desktop-nav">

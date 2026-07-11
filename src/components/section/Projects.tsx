@@ -6,9 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui
 import { Badge } from '../ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { ExternalLink, Code, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
-import { socialLinks } from '../../config/socialLinks';
 import { lightStars, darkStars, specialStars } from '../../assets/stars';
 import { comingSoon } from '../../assets';
+import { AIFashionIcon, UXUIDesignIcon, FinancialModelingIcon } from '../../assets/project_icons';
+
 
 const Projects = () => {
   const { isDarkMode } = useDarkMode();
@@ -229,36 +230,28 @@ const Projects = () => {
   // project data - these are the main cards
   const projects = [
     {
-      title: "Project One",
-      description: "A brief description of your first project. Highlight the key features and what makes it unique.",
-      technologies: ["React", "TypeScript", "Node.js", "MongoDB"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-one",
-      githubUrl: socialLinks.repositories.projectOne
+      title: "AI Fashion Recommendation System",
+      description: "Collaborated on the development of an AI-driven fashion recommendation system, supporting analysis of user preferences and trend-based recommendation logic.",
+      technologies: ["AI/ML", "Data Analysis", "Python"],
+      icon: AIFashionIcon,
+      detailsUrl: "/projects/ai-fashion-recommendation",
+      githubUrl: "#"
     },
     {
-      title: "Project Two",
-      description: "A brief description of your second project. Highlight the key features and what makes it unique.",
-      technologies: ["Python", "Flask", "PostgreSQL", "Docker"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-two",
-      githubUrl: socialLinks.repositories.projectTwo
+      title: "UX/UI Design Collaboration",
+      description: "Designed user-friendly interfaces in Figma and collaborated with developers to support front-end implementation as part of Tech Collaborative.",
+      technologies: ["Figma", "UX/UI Design"],
+      icon: UXUIDesignIcon,
+      detailsUrl: "/projects/ux-ui-collaboration",
+      githubUrl: "#"
     },
     {
-      title: "Project Three",
-      description: "A brief description of your third project. Highlight the key features and what makes it unique.",
-      technologies: ["JavaScript", "Express", "AWS", "Tailwind CSS"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-three",
-      githubUrl: socialLinks.repositories.projectThree
-    },
-    {
-      title: "Project Four",
-      description: "A brief description of your fourth project. Highlight the key features and what makes it unique.",
-      technologies: ["C++", "CMake", "OpenGL"],
-      icon: comingSoon,
-      detailsUrl: "/projects/project-four",
-      githubUrl: socialLinks.repositories.projectFour
+      title: "Financial Modeling & Valuation Training",
+      description: "Completed an analyst training program covering financial modeling, valuation, and business analysis through hands-on workshops with industry professionals in investment banking, venture capital, and consulting.",
+      technologies: ["Financial Modeling", "Valuation", "Excel"],
+      icon: FinancialModelingIcon,
+      detailsUrl: "/projects/financial-modeling-training",
+      githubUrl: "#"
     }
   ];
 
@@ -498,10 +491,12 @@ const Projects = () => {
                       <ExternalLink className="h-4 w-4" aria-hidden="true" />
                       Details
                     </Link>
-                    <a href={project.githubUrl} className="project-btn-outline flex items-center gap-1" style={{ textDecoration: 'none' }} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`}>
-                      <Code className="h-4 w-4" aria-hidden="true" />
-                      Code
-                    </a>
+                    {project.githubUrl && project.githubUrl !== "#" && (
+  <a href={project.githubUrl} className="project-btn-outline flex items-center gap-1" style={{ textDecoration: 'none' }} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title} source code on GitHub`}>
+    <Code className="h-4 w-4" aria-hidden="true" />
+    Code
+  </a>
+)}
                   </div>
                 </CardContent>
               </Card>
