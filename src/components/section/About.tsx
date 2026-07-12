@@ -217,7 +217,7 @@ const About = () => {
               </div>
               <div className="hero-subtitle justify-start text-base md:text-lg lg:text-xl mt-2">
                 <div className="flex flex-wrap items-center justify-start">
-                  <span className={isDarkMode ? 'hero-subtitle-dark' : 'hero-subtitle-light'}>I am a&nbsp;</span>
+                <span className={isDarkMode ? 'hero-subtitle-dark' : 'hero-subtitle-light'}>I am a </span>
                   <TypewriterCarousel roles={roles} className={isDarkMode ? 'hero-subtitle-dark' : 'hero-subtitle-light'} />
                 </div>
               </div>
