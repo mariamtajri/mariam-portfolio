@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Budgetly — Know where it went</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#F5F6F0; --card:#FFFFFF; --ink:#1D2A24; --muted:#5B665F; --faint:#7C8278;
+    --line:#DEDFD4; --forest:#2F5D50; --forest-d:#1E4238; --danger-bg:#FCEBEB; --danger-ink:#501313; --danger:#C93B3A;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:#131C17; --card:#1C2822; --ink:#F2F4EF; --muted:#A9B0A4; --faint:#8A9086;
+      --line:#2C372F; --forest:#4C8A78; --forest-d:#3E7262; --danger-bg:#3A1F1F; --danger-ink:#F7C1C1; --danger:#D95A59;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:#131C17; --card:#1C2822; --ink:#F2F4EF; --muted:#A9B0A4; --faint:#8A9086;
+    --line:#2C372F; --forest:#4C8A78; --forest-d:#3E7262; --danger-bg:#3A1F1F; --danger-ink:#F7C1C1; --danger:#D95A59;
+  }
+  html { scroll-padding-top:env(safe-area-inset-top,0px); }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px; }
+  header { padding:22px 0; border-bottom:1px solid var(--line); }
+  header .wrap { display:flex; justify-content:space-between; align-items:center; }
+  .logo { font-family:'Fraunces',Georgia,serif; font-size:22px; font-weight:500; }
+  .logo span { color:var(--forest); }
+  .tag { font-size:12px; color:var(--muted); }
+  .hero { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; padding:56px 0 64px; }
+  .eyebrow { font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--forest); margin:0 0 14px; }
+  h1 { font-family:'Fraunces',Georgia,serif; font-weight:500; font-size:44px; line-height:1.1; margin:0 0 18px; }
+  h1 em { color:var(--forest); }
+  .sub { font-size:16px; color:var(--muted); max-width:420px; margin:0 0 22px; }
+  .pills { display:flex; flex-wrap:wrap; gap:8px; }
+  .pill { font-size:12px; border:1px solid var(--line); background:var(--card); border-radius:999px; padding:5px 12px; color:var(--muted); }
+  .phone { width:100%; max-width:340px; margin:0 auto; background:var(--card); border:1px solid var(--line); border-radius:26px; padding:22px 20px; }
+  .greet { font-size:13px; color:var(--muted); margin:0; }
+  .month { font-family:'Fraunces',Georgia,serif; font-size:20px; margin:2px 0 14px; }
+  .bal { background:var(--paper); border-radius:14px; padding:14px 16px; margin-bottom:18px; }
+  .bal .l { font-size:12px; color:var(--faint); margin:0 0 2px; }
+  .bal .a { font-family:'JetBrains Mono',monospace; font-size:28px; margin:0; }
+  .bal .d { font-size:11px; color:var(--faint); margin:4px 0 0; }
+  .lbl { font-size:12px; font-weight:600; color:var(--muted); margin:0 0 10px; }
+  .row { display:flex; justify-content:center; align-items:flex-end; gap:10px; margin-bottom:18px; min-height:100px; }
+  .col { display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .c { border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace; font-size:11px; transition:width .3s ease,height .3s ease; }
+  .n { font-size:10px; color:var(--muted); }
+  .m { font-size:10px; color:var(--faint); }
+  .rem { background:var(--danger-bg); border-radius:12px; padding:11px 13px; display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; transition:opacity .2s; }
+  .rem b { display:block; font-size:12px; color:var(--danger-ink); }
+  .rem span { font-size:11px; color:var(--ink); }
+  .rem button { font:500 11px 'Inter',sans-serif; background:var(--danger); color:#fff; border:0; border-radius:8px; padding:7px 12px; cursor:pointer; }
+  .rem.paid { opacity:.55; }
+  .rem.paid button { background:var(--faint); cursor:default; }
+  form { display:flex; gap:6px; border-top:1px solid var(--line); padding-top:14px; }
+  select,input { font:13px 'Inter',sans-serif; padding:9px; border-radius:9px; border:1px solid var(--line); background:var(--paper); color:var(--ink); }
+  select { flex:1.2; min-width:0; } input { flex:1; width:0; min-width:0; }
+  form button { font:500 13px 'Inter',sans-serif; background:var(--forest); color:#fff; border:0; border-radius:9px; padding:9px 14px; cursor:pointer; }
+  form button:hover { background:var(--forest-d); }
+  .hint { font-size:11px; color:var(--faint); text-align:center; margin:10px 0 0; }
+  footer { border-top:1px solid var(--line); padding:22px 0 28px; font-size:12px; color:var(--faint); }
+  @media (max-width:760px) { .hero { grid-template-columns:1fr; gap:32px; padding:36px 0 48px; } h1 { font-size:34px; } }
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="logo">budget<span>ly</span></div><span class="tag">Student project · sample data</span></div></header>
+
+<main class="wrap hero">
+  <div>
+    <p class="eyebrow">Personal budgeting, made simple</p>
+    <h1>See where it <em>went</em>, before it’s gone.</h1>
+    <p class="sub">Budgetly tracks spending in plain categories, shows savings progress, and reminds you before a card payment is due. Try the demo: add a transaction and watch the balance and circles update.</p>
+    <div class="pills"><span class="pill">Category circles</span><span class="pill">Savings goal</span><span class="pill">Bill reminders</span></div>
+  </div>
+  <div class="phone" aria-label="Budgetly dashboard demo">
+    <p class="greet" id="greet"></p>
+    <p class="month" id="month"></p>
+    <div class="bal"><p class="l">Left to spend</p><p class="a" id="bal"></p><p class="d" id="days"></p></div>
+    <p class="lbl">Categories</p>
+    <div class="row" id="row"></div>
+    <div class="rem" id="rem"><div><b>Chase card due</b><span id="remsub"></span></div><button id="paid" type="button">Mark paid</button></div>
+    <form id="f">
+      <select id="cat" aria-label="Category"></select>
+      <input id="amt" type="number" min="1" step="1" placeholder="$ amount" aria-label="Amount" required>
+      <button type="submit">Add</button>
+    </form>
+    <p class="hint">Demo only. Nothing is saved or sent anywhere.</p>
+  </div>
+</main>
+
+<footer><div class="wrap">Designed and built by Mariam Tajri. The full app uses React, TypeScript, and Supabase for sign-in and data; this page is an interactive preview.</div></footer>
+
+<script>
+  var BUDGET = 960;
+  var cats = [
+    {k:'groceries', n:'Groceries', lim:400, sp:288, bg:'#9FE1CB', ink:'#04342C'},
+    {k:'dining', n:'Dining', lim:150, sp:142, bg:'#F0997B', ink:'#4A1B0C'},
+    {k:'transport', n:'Transport', lim:80, sp:95, bg:'#ED93B1', ink:'#4B1528'},
+    {k:'savings', n:'Savings', lim:500, sp:200, bg:'#AFA9EC', ink:'#26215C', goal:true},
+    {k:'other', n:'Other', lim:100, sp:22.4, bg:'#FAC775', ink:'#412402'}
+  ];
+  var now = new Date(), h = now.getHours();
+  document.getElementById('greet').textContent = (h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening') + ', Mariam';
+  document.getElementById('month').textContent = now.toLocaleString('en-US', {month:'long'});
+  var left = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate() - now.getDate();
+  document.getElementById('days').textContent = left + ' days left this month';
+  var due = new Date(now); due.setDate(due.getDate() + 3);
+  var dueEl = document.getElementById('remsub');
+  dueEl.textContent = '$284.11 due ' + due.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+  var sel = document.getElementById('cat');
+  cats.filter(function(c){return !c.goal;}).forEach(function(c){ var o = document.createElement('option'); o.value = c.k; o.textContent = c.n; sel.appendChild(o); });
+
+  function render() {
+    var spent = cats.filter(function(c){return !c.goal;}).reduce(function(s,c){return s + c.sp;}, 0);
+    document.getElementById('bal').textContent = '$' + (BUDGET - spent).toFixed(2);
+    var max = Math.max.apply(null, cats.map(function(c){return c.sp;}));
+    var row = document.getElementById('row'); row.innerHTML = '';
+    cats.forEach(function(c) {
+      var size = 44 + Math.round(36 * Math.sqrt(c.sp / max));
+      var col = document.createElement('div'); col.className = 'col';
+      col.innerHTML = '<div class="c" style="width:' + size + 'px;height:' + size + 'px;background:' + c.bg + ';color:' + c.ink + '">' + Math.round(c.sp / c.lim * 100) + '%</div><span class="n">' + c.n + '</span><span class="m">$' + Math.round(c.sp) + '</span>';
+      row.appendChild(col);
+    });
+  }
+  document.getElementById('f').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var v = parseFloat(document.getElementById('amt').value);
+    if (!v || v <= 0) return;
+    cats.forEach(function(c){ if (c.k === sel.value) c.sp += v; });
+    document.getElementById('amt').value = '';
+    render();
+  });
+  document.getElementById('paid').addEventListener('click', function() {
+    document.getElementById('rem').classList.add('paid'); this.textContent = 'Paid'; this.disabled = true;
+  });
+  render();
+</script>
+</body>
+</html>
